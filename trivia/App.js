@@ -1,17 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, StyleSheet, TabBarIOS, Text, TouchableOpacity, View } from 'react-native';
+import { Button, SafeAreaView, StyleSheet, TabBarIOS, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Constants from 'expo-constants';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 TouchableOpacity.defaultProps = { activeOpacity: 0.8 };
 
 const AppButton = ({ onPress, title }) => (
-  <TouchableOpacity onPress={onPress} style={styles.appButton} >
+    <TouchableOpacity onPress={onPress} style={styles.appButton} >
     <Text style={styles.appButtonText}>{title}</Text>
   </TouchableOpacity>
+  
+);
+
+const CodingCatButton = ({ onPress, title }) => (
+  <View style={{paddingRight: 15}}>
+  <TouchableOpacity onPress={onPress} style={styles.codingCategoryButton} >
+    <Text style={styles.codingCategoryButtonText}>{title}</Text>
+  </TouchableOpacity>
+  </View>
 );
 
 function HomeScreen({ navigation }) {
@@ -27,14 +36,18 @@ function HomeScreen({ navigation }) {
 
 function CodingCategoriesScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <View style={{ width: "70%" }}>
+    <SafeAreaView style={styles.container}>
+      
+        <View style={{ padding: 20, flexDirection: "row" }}>
+        <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="Java" />
+        <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="JavaScript" />
+        </View>
+      <View style={{ width: "70%", padding: 20 }}>
         <AppButton onPress={() => navigation.navigate('Coding Questions')} title="Quickplay" />
-
+        
       </View>
-
       <Button title="Go back" onPress={() => navigation.navigate('Home')} />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -109,10 +122,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: Constants.statusBarHeight,
     flex: 1,
     backgroundColor: '#2c3e58',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center'
   },
   appButton: {
     borderRadius: 8,
@@ -120,11 +134,31 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: '#f01d71',
   },
+  codingCategoryButton: {
+    height: 100,
+    borderRadius: 8,
+    width: 100,
+    paddingVertical: 14,
+    paddingHorizontal: 10,
+    backgroundColor: '#f01d71',
+  },
+  codingCategoryButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    fontSize: 13,
+    textAlign: 'center',
+    paddingTop: 25,
+  },
   appButtonText: {
     color: 'white',
     fontWeight: 'bold',
     textTransform: 'uppercase',
     fontSize: 16,
     textAlign: 'center'
+  },
+  horizontalLine: {
+    borderBottomColor: '#FFFFFF',
+    borderBottomWidth: 2,
   },
 });

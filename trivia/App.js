@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Constants from 'expo-constants';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
 import store from './redux/store'
 import {connect, Provider} from 'react-redux'
 
@@ -14,6 +15,13 @@ const AppButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.appButton} >
     <Text style={styles.appButtonText}>{title}</Text>
   </TouchableOpacity>
+);
+
+const AnswerButton = ({ onPress, title }) => (
+  <TouchableOpacity onPress={onPress} style={styles.answerButton} >
+  <Text style={styles.answerButtonText}>{title}</Text>
+</TouchableOpacity>
+
 );
 
 const CodingCatButton = ({ onPress, title }) => (
@@ -33,7 +41,7 @@ const UserOptionButton = ({ onPress, title }) => (
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.mainContainer}>
-      <View style={{ width: "50%" }}>
+      <View>
         <AppButton onPress={() => navigation.navigate('Coding Categories')} title="Play" />
       </View>
     </View>
@@ -49,7 +57,7 @@ function CodingCategoriesScreen({ navigation }) {
         <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="Java" />
         <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="JavaScript" />
         </View>
-      <View style={{ width: "70%", padding: 20 }}>
+      <View style={{paddingBottom: 20}}>
         <AppButton onPress={() => navigation.navigate('Coding Questions')} title="Quickplay" />
         
       </View>
@@ -112,22 +120,22 @@ function CodingQuestionScreen({ navigation }) {
         </View>
         <View style={styles.optionContainer}>
         
-          <UserOptionButton onPress={() => {handleAnswerButtonClick()
+          <AnswerButton onPress={() => {handleAnswerButtonClick()
                                             store.getState().user.userChoices.push(currentQuestion.options.choiceOne)  }}
             title={currentQuestion.options.choiceOne} />
           <View style={{flexDirection: "row"}}>
             <View style={{}}>
-              <UserOptionButton onPress={() => {handleAnswerButtonClick()
+              <AnswerButton onPress={() => {handleAnswerButtonClick()
                                             store.getState().user.userChoices.push(currentQuestion.options.choiceTwo)  }} 
               title={currentQuestion.options.choiceTwo} />
             </View>
             <View style={{paddingStart: 85}}>
-              <UserOptionButton onPress={() => {handleAnswerButtonClick()
+              <AnswerButton onPress={() => {handleAnswerButtonClick()
                                             store.getState().user.userChoices.push(currentQuestion.options.choiceThree)  }}  
               title={currentQuestion.options.choiceThree} />
             </View>
           </View>
-          <UserOptionButton onPress={() => {handleAnswerButtonClick()
+          <AnswerButton onPress={() => {handleAnswerButtonClick()
                                             store.getState().user.userChoices.push(currentQuestion.options.choiceFour)  }}
               title={currentQuestion.options.choiceFour} />
         </View>
@@ -145,7 +153,6 @@ function SettingsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Settings</Text>
-      {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
     </View>
   );
 }
@@ -224,15 +231,26 @@ const styles = StyleSheet.create({
   },
   appButton: {
     borderRadius: 8,
-    paddingVertical: 14,
-    paddingHorizontal: 10,
+    height: responsiveHeight(8),
+    width: responsiveWidth(50),
     backgroundColor: '#f01d71',
+    alignContent: 'center',
+    justifyContent: 'center'
+  },
+  answerButton: {
+    borderRadius: 8,
+    height: responsiveHeight(7),
+    width: responsiveWidth(35),
+    backgroundColor: '#ff7675',
+    alignContent: 'center',
+    justifyContent: 'center',
+    margin: 5,
   },
   appButtonText: {
     color: 'white',
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    fontSize: 16,
+    fontSize: responsiveFontSize(3),
     textAlign: 'center'
   },
   optionButton: {
@@ -266,7 +284,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 25,
   },
-  
+  answerButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    fontSize: responsiveFontSize(1.5),
+    textAlign: 'center'
+  },
   horizontalLine: {
     borderBottomColor: '#FFFFFF',
     borderBottomWidth: 2,

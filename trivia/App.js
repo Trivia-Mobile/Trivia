@@ -150,7 +150,13 @@ function CodingQuestionScreen({ navigation }) {
           <AnswerButton onPress={() => {handleAnswerButtonClick()
                                             store.getState().user.userChoices.push(currentQuestion.options.choiceFour)  }}
               title={currentQuestion.options.choiceFour} />
+         
         </View>
+        <View style={{paddingStart: 100}}>
+        <AppButton onPress={() => {navigation.navigate('Coding Categories')
+                                                store.getState().user.userChoices = []}} title="Quit" />
+                                                </View>
+                                               
         </View>
       )}
     </View>

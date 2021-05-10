@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, TabBarIOS, Text, TouchableOpacity, View, FlatList, Image, Button } from 'react-native';
+import { KeyboardAvoidingView,SafeAreaView, StyleSheet, TabBarIOS, Text, TouchableOpacity, View, ScrollView, Image, Button, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Constants from 'expo-constants';
@@ -39,25 +39,35 @@ const UserOptionButton = ({ onPress, title }) => (
 );
 
 function HomeScreen({ navigation }) {
+
   return (
     <View style={styles.mainContainer}>
       <Image style = {styles.logo} source={require('./misc/imgs/logo3.png')} />
       <Image style = {styles.backgroundImage} source= {require('./misc/imgs/bgnd.jpg')}/>
+
         <View>
             <AppButton onPress={() => navigation.navigate('Coding Categories')} title="Play" />
         </View>
+
     </View>
   );
 }
 
 function CodingCategoriesScreen({ navigation }) {
+
   return (
     
       <SafeAreaView style={styles.mainContainer}>
         <Image style = {styles.backgroundImage} source= {require('./misc/imgs/bgnd.jpg')}/>
-        <View style={{ padding: 20, flexDirection: "row" }}>
-        <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="Java" />
-        <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="JavaScript" />
+        <View style={styles.categorySelection}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="Java" />
+            <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="JavaScript" />
+            <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="C++" />
+            <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="C#" />
+            <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="Python" />
+
+          </ScrollView>
         </View>
       <View style={{paddingBottom: 20}}>
         <AppButton onPress={() => navigation.navigate('Coding Questions')} title="Quickplay" />
@@ -271,20 +281,19 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   codingCategoryButton: {
-    height: 100,
-    borderRadius: 8,
-    width: 100,
-    paddingVertical: 14,
-    paddingHorizontal: 10,
+    borderRadius: 80,
+    height: responsiveHeight(7.5),
+    width: responsiveWidth(35),
     backgroundColor: '#e3c400',
+    marginBottom: 10,
   },
   codingCategoryButtonText: {
     color: 'white',
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    fontSize: 13,
+    fontSize: responsiveFontSize(2),
     textAlign: 'center',
-    paddingTop: 25,
+    paddingTop: 16,
   },
   answerButtonText: {
     color: 'white',
@@ -301,7 +310,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    fontSize: 25,
+    fontSize: responsiveFontSize(3),
+    height: responsiveHeight(10),
     textAlign: 'center',
     paddingBottom: 10,
     marginBottom: 10,
@@ -321,18 +331,24 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    width: '95%',
-    height: '100%',
+    width: responsiveWidth(95),
+    height: responsiveHeight(100),
     resizeMode: 'contain'
    },
    backgroundImage: {
     position: 'absolute',
-    height:'100%',
+    height: responsiveHeight(100),
     opacity: .25
    },
    logo: {
     width: '100%',
     resizeMode: 'contain',
     opacity:1
-   }
+   },
+   categorySelection: { 
+    height: responsiveHeight(35), 
+    alignContent: 'center',
+    justifyContent: 'center',
+    paddingBottom: 40
+  },
 });

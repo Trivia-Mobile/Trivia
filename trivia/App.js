@@ -41,9 +41,11 @@ const UserOptionButton = ({ onPress, title }) => (
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.mainContainer}>
-      <View>
-        <AppButton onPress={() => navigation.navigate('Coding Categories')} title="Play" />
-      </View>
+      <Image style = {styles.logo} source={require('./misc/imgs/logo3.png')} />
+      <Image style = {styles.backgroundImage} source= {require('./misc/imgs/bgnd.jpg')}/>
+        <View>
+            <AppButton onPress={() => navigation.navigate('Coding Categories')} title="Play" />
+        </View>
     </View>
   );
 }
@@ -52,7 +54,7 @@ function CodingCategoriesScreen({ navigation }) {
   return (
     
       <SafeAreaView style={styles.mainContainer}>
-      
+        <Image style = {styles.backgroundImage} source= {require('./misc/imgs/bgnd.jpg')}/>
         <View style={{ padding: 20, flexDirection: "row" }}>
         <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="Java" />
         <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="JavaScript" />
@@ -108,8 +110,8 @@ function CodingQuestionScreen({ navigation }) {
   }, [index]);
   return (
     <View style={styles.mainContainer}>
-
-      {showScore ? <View><Text style={styles.questionText}>{score}</Text>
+       <Image style = {styles.backgroundImage} source= {require('./misc/imgs/bgnd.jpg')}/>
+      {showScore ? <View style={styles.scoreContainer}><Text style={styles.questionText}>You got {score} points, Amazing!</Text>
                     <AppButton onPress={() => {navigation.navigate('Coding Categories')
                                                 store.getState().user.userChoices = []}} title="Leave" /></View> 
                     : 
@@ -119,7 +121,7 @@ function CodingQuestionScreen({ navigation }) {
           <Text style={styles.questionText}>{currentQuestion.programmingQuestion}</Text>
         </View>
         <View style={styles.optionContainer}>
-        
+          <Image style = {styles.backgroundImage} source= {require('./misc/imgs/bgnd.jpg')}/>
           <AnswerButton onPress={() => {handleAnswerButtonClick()
                                             store.getState().user.userChoices.push(currentQuestion.options.choiceOne)  }}
             title={currentQuestion.options.choiceOne} />
@@ -233,7 +235,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     height: responsiveHeight(8),
     width: responsiveWidth(50),
-    backgroundColor: '#f01d71',
+    backgroundColor: '#e3c400',
     alignContent: 'center',
     justifyContent: 'center'
   },
@@ -241,7 +243,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     height: responsiveHeight(7),
     width: responsiveWidth(35),
-    backgroundColor: '#ff7675',
+    backgroundColor: '#e3c400',
     alignContent: 'center',
     justifyContent: 'center',
     margin: 5,
@@ -274,7 +276,7 @@ const styles = StyleSheet.create({
     width: 100,
     paddingVertical: 14,
     paddingHorizontal: 10,
-    backgroundColor: '#f01d71',
+    backgroundColor: '#e3c400',
   },
   codingCategoryButtonText: {
     color: 'white',
@@ -301,6 +303,14 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     fontSize: 25,
     textAlign: 'center',
+    paddingBottom: 10,
+    marginBottom: 10,
+    borderBottomWidth: 5,
+    borderBottomColor: 'white',
+  },
+  scoreContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   optionText: {
     color: 'white',
@@ -314,5 +324,15 @@ const styles = StyleSheet.create({
     width: '95%',
     height: '100%',
     resizeMode: 'contain'
-}
+   },
+   backgroundImage: {
+    position: 'absolute',
+    height:'100%',
+    opacity: .25
+   },
+   logo: {
+    width: '100%',
+    resizeMode: 'contain',
+    opacity:1
+   }
 });

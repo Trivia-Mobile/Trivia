@@ -14,7 +14,6 @@ const AppButton = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.appButton} >
     <Text style={styles.appButtonText}>{title}</Text>
   </TouchableOpacity>
-  
 );
 
 const CodingCatButton = ({ onPress, title }) => (
@@ -23,6 +22,12 @@ const CodingCatButton = ({ onPress, title }) => (
     <Text style={styles.codingCategoryButtonText}>{title}</Text>
   </TouchableOpacity>
   </View>
+);
+
+const UserOptionButton = ({ onPress, title }) => (
+  <TouchableOpacity onPress={onPress} style={styles.optionButton} >
+  <Text style={styles.optionButtonText}>{title}</Text>
+</TouchableOpacity>
 );
 
 function HomeScreen({ navigation }) {
@@ -56,36 +61,83 @@ function CodingCategoriesScreen({ navigation }) {
 }
 
 function CodingQuestionScreen({ navigation }) {
-  const bank = store.getState().Question[0]
+  const bank = store.getState()
 
-  const[currentQuestion, setCurrentQuestion] = useState('')
-  const[data, setData] = useState([])
+  const[currentQuestion, setCurrentQuestion] = useState(bank.Question[0])
+  const[index, setIndex] = useState(0)
+  const[data, setData] = useState(bank)
+  const[showScore, setShowScore] = useState(false)
+  const[score, setScore] = useState(0)
+
+  const handleAnswerButtonClick = (choice) => {
+    const nextIndex = index + 1;
+    setIndex(nextIndex)
+  };
+    
+  
 
   useEffect(() => {
-    setCurrentQuestion("testing")
     setData(bank)
-    // console.log(data)
-  }, []);
-
+    if(data.Question.length > index){
+      setCurrentQuestion(bank.Question[index])
+      console.log(store.getState())
+    }
+    else{
+      let scoreID = null
+      store.getState().user.userChoices.forEach(function iterate(item, index) {
+        const answer = store.getState().Question[index].correctAnswer
+        if(item == answer){
+          scoreID++
+        }
+      })
+      setScore(scoreID)
+      setShowScore(true)      
+      return () => {
+        clearInterval(scoreID);
+      };
+    }
+    
+  }, [index]);
   return (
-      <View style={styles.container}>
-        <View style={{backgroundColor: '#2B9191',borderColor: 'white', borderWidth: 1}}>
-          <Text style={styles.questionText}>{data.programmingQuestion}</Text>
+    <View style={styles.mainContainer}>
+
+      {showScore ? <View><Text style={styles.questionText}>{score}</Text>
+                    <AppButton onPress={() => {navigation.navigate('Coding Categories')
+                                                store.getState().user.userChoices = []}} title="Leave" /></View> 
+                    : 
+
+      ( <View style={styles.container}>
+          <View style={{backgroundColor: '#2B9191',borderColor: 'white', borderWidth: 1}}>
+          <Text style={styles.questionText}>{currentQuestion.programmingQuestion}</Text>
         </View>
         <View style={styles.optionContainer}>
         
-          <AppButton title={bank.options.choiceOne} />
+          <UserOptionButton onPress={() => {handleAnswerButtonClick()
+                                            store.getState().user.userChoices.push(currentQuestion.options.choiceOne)  }}
+            title={currentQuestion.options.choiceOne} />
           <View style={{flexDirection: "row"}}>
             <View style={{}}>
-              <AppButton title={bank.options.choiceTwo} />
+              <UserOptionButton onPress={() => {handleAnswerButtonClick()
+                                            store.getState().user.userChoices.push(currentQuestion.options.choiceTwo)  }} 
+              title={currentQuestion.options.choiceTwo} />
             </View>
             <View style={{paddingStart: 85}}>
-              <AppButton title={bank.options.choiceThree} />
+              <UserOptionButton onPress={() => {handleAnswerButtonClick()
+                                            store.getState().user.userChoices.push(currentQuestion.options.choiceThree)  }}  
+              title={currentQuestion.options.choiceThree} />
             </View>
+          </View>
+          <UserOptionButton onPress={() => {handleAnswerButtonClick()
+                                            store.getState().user.userChoices.push(currentQuestion.options.choiceFour)  }}
+              title={currentQuestion.options.choiceFour} />
         </View>
-        <AppButton title={bank.options.choiceFour} />
         </View>
-      </View>
+      )}
+    </View>
+      
+      
+        
+      
   );
 }
 
@@ -176,6 +228,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: '#f01d71',
   },
+  appButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    fontSize: 16,
+    textAlign: 'center'
+  },
+  optionButton: {
+    borderRadius: 8,
+    paddingVertical: 14,
+    paddingHorizontal: 10,
+    backgroundColor: '#f01d71',
+    maxWidth: 200,
+    width: 130
+  },
+  optionButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    fontSize: 13,
+    textAlign: 'center'
+  },
   codingCategoryButton: {
     height: 100,
     borderRadius: 8,
@@ -192,13 +266,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 25,
   },
-  appButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    fontSize: 16,
-    textAlign: 'center'
-  },
+  
   horizontalLine: {
     borderBottomColor: '#FFFFFF',
     borderBottomWidth: 2,

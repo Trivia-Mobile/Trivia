@@ -178,7 +178,7 @@ function CodingQuestionScreen({route, navigation }) {
       ( <View style={styles.container}>
           <View style={{backgroundColor: '#2B9191',borderColor: 'white', borderWidth: 1}}>
           <Text style={styles.questionText}>{currentQuestion.programmingQuestion}</Text>
-        </View>
+          </View>
         <View style={styles.optionContainer}>
           <Image style = {styles.backgroundImage} source= {require('./misc/imgs/bgnd.jpg')}/>
           <AnswerButton onPress={() => {handleAnswerButtonClick()

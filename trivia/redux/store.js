@@ -5,6 +5,7 @@ import reducer from './reducer'
 
 const store = createStore(reducer)
 
+//javascript Questions
 const option_1 = {
     choiceOne: 'Undefined',
     choiceTwo: 'Object',
@@ -38,6 +39,7 @@ const option_5 = {
     choiceFour: 'JavaScriptCore'
 }
 
+//java Questions
 const option_6 = {
     choiceOne: 'Use of Inheritance',
     choiceTwo: 'Using Access specifiers',
@@ -70,29 +72,92 @@ const option_10 = {
     choiceThree: 'polymorphism',
     choiceFour: 'multipath inheritance'
 }
-
 const option_11 = {
+    choiceOne: 'plus and minus',
+    choiceTwo: '++ and --',
+    choiceThree: 'binary and unary',
+    choiceFour: 'conditional and relational'
+}
+const option_12 = {
+    choiceOne: 'prefix increment',
+    choiceTwo: 'postfix increment',
+    choiceThree: 'prefix decrement',
+    choiceFour: 'postfix decrement'
+}
+const option_13 = {
+    choiceOne: 'post-test',
+    choiceTwo: 'pre-test',
+    choiceThree: 'infinite',
+    choiceFour: 'limited'
+}
+const option_14 = {
+    choiceOne: 'pre-test loop',
+    choiceTwo: 'post-test loop',
+    choiceThree: 'null statement',
+    choiceFour: 'infinite loop'
+}
+const option_15 = {
+    choiceOne: 'at least once',
+    choiceTwo: 'at least twice',
+    choiceThree: 'as many times ',
+    choiceFour: 'never'
+}
+//python questions
+
+const option_16 = {
     choiceOne: 'x**y',
     choiceTwo: 'x ^ ^ y',
     choiceThree: 'x ^ * y',
     choiceFour: 'x ^ y'
 }
 
-const option_16 = {
+// C++ questions
+const option_17 = {
     choiceOne: 'x^y',
     choiceTwo: 'x**y',
     choiceThree: 'x^^y',
     choiceFour: 'None of the above'
 }
-
+const option_18 = {
+    choiceOne: 'read operator',
+    choiceTwo: 'print operator',
+    choiceThree: 'input operator',
+    choiceFour: 'math operator'
+}
+const option_19 = {
+    choiceOne: '9',
+    choiceTwo: '8',
+    choiceThree: '6',
+    choiceFour: '4'
+}
+const option_20 = {
+    choiceOne: '&&, ||, !=',
+    choiceTwo: '||, !, ==',
+    choiceThree: '!, ||, &&',
+    choiceFour: '**,^^,%%'
+}
 const option_21 = {
+    choiceOne: 'library function',
+    choiceTwo: 'header file',
+    choiceThree: 'inline function',
+    choiceFour: 'structure'
+}
+const option_22 = {
+    choiceOne: 'private and public',
+    choiceTwo: 'opened and closed',
+    choiceThree: 'table and row',
+    choiceFour: 'near and far'
+}
+
+// C# Questions
+const option_23 = {
     choiceOne: 'abstract',
     choiceTwo: 'as',
     choiceThree: 'foreach',
     choiceFour: 'All of the above.'
 }
 
-const option_22 = {
+const option_24 = {
     choiceOne: 'ToSingle',
     choiceTwo: 'ToByte',
     choiceThree: 'ToChar',
@@ -114,15 +179,27 @@ store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'W
 store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'To prevent any method from overriding, we declare the method as', correctAnswer: 'final', options: option_9}))
 store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'When a class serves as base class for many derived classes, the situation is called', correctAnswer: 'hierarchical inheritance', options: option_10}))
 
-store.dispatch(addQuestion({programmingLanguage: 'PYTHON', programmingQuestion: 'Which of the following operators is the correct option for power(xy)?', correctAnswer: 'x**y', options: option_11}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'These are operators that add and subtract one from their operands.', correctAnswer: '++ and --', options: option_11}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'This operator increments the value of its operand, then uses the value in context.', correctAnswer: 'prefix increment', options: option_12}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'The while loop is this type of loop.', correctAnswer: 'pre-test', options: option_13}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'If you place a semicolon after the test expression in a while loop, it is assumed to be a(n):', correctAnswer: 'null statement', options: option_14}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'The statements in the body of a while loop may never be executed, whereas the statements in the body of a do-while loop will be executed:', correctAnswer: 'at least once', options: option_15}))
 
-store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'The following operator can be used to calculate the value of one number raised to another.', correctAnswer: 'None of the above', options: option_16}))
+store.dispatch(addQuestion({programmingLanguage: 'PYTHON', programmingQuestion: 'Which of the following operators is the correct option for power(xy)?', correctAnswer: 'x**y', options: option_16}))
 
-store.dispatch(addQuestion({programmingLanguage: 'C#', programmingQuestion: 'Which of the following is a reserved keyword in C#??', correctAnswer: 'All of the above.', options: option_21}))
-store.dispatch(addQuestion({programmingLanguage: 'C#', programmingQuestion: 'Which of the following converts a type to a single Unicode character, where possible in C#?', correctAnswer: 'ToChar', options: option_22}))
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'The following operator can be used to calculate the value of one number raised to another.', correctAnswer: 'None of the above', options: option_17}))
 
-console.log(store.getState().Question[0].correctAnswer)
-// store.getState().user.userChoices.push(1)
-// console.log(store.getState().user.userChoices)
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'What is cout used for?', correctAnswer: 'print operator', options: option_18}))
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'What is the result of: pow( 3, 2 )', correctAnswer: '9', options: option_19}))
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'Which of the following are logical operators?', correctAnswer: '!, ||, &&', options: option_20}))
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'A C++ class is similar to one of these.', correctAnswer: 'structure', options: option_21}))
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'Examples of access specifiers are the key words:', correctAnswer: 'private and public', options: option_22}))
+
+store.dispatch(addQuestion({programmingLanguage: 'C#', programmingQuestion: 'Which of the following is a reserved keyword in C#??', correctAnswer: 'All of the above.', options: option_23}))
+store.dispatch(addQuestion({programmingLanguage: 'C#', programmingQuestion: 'Which of the following converts a type to a single Unicode character, where possible in C#?', correctAnswer: 'ToChar', options: option_24}))
+
+// console.log(store.getState().Question[0].correctAnswer)
+// // store.getState().user.userChoices.push(1)
+// // console.log(store.getState().user.userChoices)
 
 export default store

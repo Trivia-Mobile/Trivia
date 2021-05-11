@@ -71,9 +71,9 @@ function CodingCategoriesScreen({ navigation }) {
         </View>
       <View style={{paddingBottom: 20}}>
         <AppButton onPress={() => navigation.navigate('Coding Questions')} title="Quickplay" />
+        <AppButton onPress={() => navigation.navigate('Home')} title="Go back" />
         
       </View>
-      <Button title="Go back" onPress={() => navigation.navigate('Home')} />
     </SafeAreaView>
     
     

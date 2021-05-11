@@ -53,7 +53,8 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function CodingCategoriesScreen({ navigation }) {
+function CodingCategoriesScreen({route, navigation }) {
+  
 
   return (
     
@@ -61,16 +62,28 @@ function CodingCategoriesScreen({ navigation }) {
         <Image style = {styles.backgroundImage} source= {require('./misc/imgs/bgnd.jpg')}/>
         <View style={styles.categorySelection}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="Java" />
-            <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="JavaScript" />
-            <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="C++" />
-            <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="C#" />
-            <CodingCatButton onPress={() => navigation.navigate('Coding Questions')} title="Python" />
+            <CodingCatButton onPress={() => {navigation.navigate('Coding Questions', {
+              category: 'JAVA'
+            });}} title="Java" />
+            <CodingCatButton onPress={() => {navigation.navigate('Coding Questions', {
+              category: 'JAVASCRIPT'
+          });}} title="JavaScript" />
+            <CodingCatButton onPress={() => {navigation.navigate('Coding Questions', {
+            category: 'C++'
+          });}} title="C++" />
+            <CodingCatButton onPress={() => {navigation.navigate('Coding Questions', {
+            category: 'C#'
+          });}} title="C#" />
+            <CodingCatButton onPress={() => {navigation.navigate('Coding Questions', {
+            category: 'PYTHON'
+          });}} title="Python" />
 
           </ScrollView>
         </View>
       <View style={{paddingBottom: 20}}>
-        <AppButton onPress={() => navigation.navigate('Coding Questions')} title="Quickplay" />
+        <AppButton onPress={() => {navigation.navigate('Coding Questions', {
+            category: ''
+          });}} title="Quickplay" />
         <AppButton onPress={() => navigation.navigate('Home')} title="Go back" />
         
       </View>
@@ -80,7 +93,8 @@ function CodingCategoriesScreen({ navigation }) {
   );
 }
 
-function CodingQuestionScreen({ navigation }) {
+function CodingQuestionScreen({route, navigation }) {
+  const category = route.params.category
   const bank = store.getState()
 
   const[currentQuestion, setCurrentQuestion] = useState(bank.Question[0])
@@ -94,22 +108,57 @@ function CodingQuestionScreen({ navigation }) {
     setIndex(nextIndex)
   };
     
-  
 
   useEffect(() => {
-    setData(bank)
+    
     if(data.Question.length > index){
-      setCurrentQuestion(bank.Question[index])
-      console.log(store.getState())
+      if(category == data.Question[index].programmingLanguage){
+        setCurrentQuestion(bank.Question[index])
+      }
+      else if(category == ''){
+        setCurrentQuestion(bank.Question[index])
+      }
+      else{
+        handleAnswerButtonClick()
+      }
+      
     }
     else{
+      
       let scoreID = null
-      store.getState().user.userChoices.forEach(function iterate(item, index) {
-        const answer = store.getState().Question[index].correctAnswer
-        if(item == answer){
-          scoreID++
-        }
-      })
+      if(category != ''){
+        let filteredArr = []
+        
+        store.getState().Question.forEach(function iterate(item, index) {
+          
+          if(item.programmingLanguage == category){
+            filteredArr.push(item)
+          }
+         
+        });
+        
+        
+        store.getState().user.userChoices.forEach(function iterate(item, index) {
+          
+          const answer = filteredArr[index].correctAnswer
+          if(item == answer){
+            scoreID++
+          }
+        });
+      }
+      else{
+        store.getState().user.userChoices.forEach(function iterate(item, index) {
+          
+          const answer = store.getState().Question[index].correctAnswer
+          if(item == answer){
+            scoreID++
+          }
+        })
+      }
+      
+      if(scoreID == null){
+        scoreID = 0
+      }
       setScore(scoreID)
       setShowScore(true)      
       return () => {

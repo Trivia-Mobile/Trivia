@@ -201,7 +201,7 @@ function CodingQuestionScreen({route, navigation }) {
               title={currentQuestion.options.choiceFour} />
          
         </View>
-        <View style={{paddingStart: 100}}>
+        <View style={{paddingStart: 100, marginBottom: 20, }}>
         <AppButton onPress={() => {navigation.navigate('Coding Categories')
                                                 store.getState().user.userChoices = []}} title="Quit" />
                                                 </View>
@@ -232,10 +232,11 @@ function MyStack() {
   return (
     <Provider store={store}>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} 
+          options={{ headerShown: false }} />
         <Stack.Screen name="Coding Questions" component={CodingQuestionScreen} 
           options={{ headerShown: false }} />
-        <Stack.Screen name="Coding Categories" component={MyBottomTabNavigator}
+        <Stack.Screen name="Coding Categories" component={CodingCategoriesScreen}
           options={{ headerShown: false }} />
       </Stack.Navigator>
     </Provider>
@@ -365,8 +366,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    fontSize: responsiveFontSize(3),
-    height: responsiveHeight(10),
+    fontSize: responsiveFontSize(2.5),
+    height: responsiveHeight(15),
+    width: responsiveWidth(100),
     textAlign: 'center',
     paddingBottom: 10,
     marginBottom: 10,

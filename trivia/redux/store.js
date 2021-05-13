@@ -164,6 +164,58 @@ const option_24 = {
     choiceFour: 'ToDateTime'
 }
 
+
+// Python Continuation
+const option_25 = {
+    choiceOne: 'int',
+    choiceTwo: 'long',
+    choiceThree: 'decimal',
+    choiceFour: 'float'
+}
+
+const option_26 = {
+    choiceOne: 's1.join(s2)',
+    choiceTwo: 's1.add(s2)',
+    choiceThree: 's1 += s2',
+    choiceFour: 's1 ++ s2'
+}
+
+const option_27 = {
+    choiceOne: 'trim()',
+    choiceTwo: 'ptrim()',
+    choiceThree: 'len()',
+    choiceFour: 'strip()'
+}
+
+const option_28 = {
+    choiceOne: 'and',
+    choiceTwo: 'not',
+    choiceThree: '**',
+    choiceFour: '%'
+}
+
+// C# Continuation
+
+const option_29 = {
+    choiceOne: 'enum',
+    choiceTwo: 'void',
+    choiceThree: 'const',
+    choiceFour: 'string'
+}
+
+const option_30 = {
+    choiceOne: 'Reference types',
+    choiceTwo: 'Pointer types',
+    choiceThree: 'Value types',
+    choiceFour: 'All of the above'
+}
+
+const option_31 = {
+    choiceOne: 'Declared using the enum keyword',
+    choiceTwo: 'C# enumerations are value data type',
+    choiceThree: 'Can not inherit or pass inheritance',
+    choiceFour: 'All of the above'
+}
 store.dispatch(updateUser({score: 0}))
 store.dispatch(updateUser({userChoices: []}))
 
@@ -173,30 +225,36 @@ store.dispatch(addQuestion({programmingLanguage: 'JAVASCRIPT', programmingQuesti
 store.dispatch(addQuestion({programmingLanguage: 'JAVASCRIPT', programmingQuestion: 'Which object is considered the “global object” for Node.js?', correctAnswer: 'global', options: option_4}))
 store.dispatch(addQuestion({programmingLanguage: 'JAVASCRIPT', programmingQuestion: 'What JavaScript engine does Google Chrome and Node use?', correctAnswer: 'V8', options: option_5}))
 
-store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'How will a class protect the code inside it?', correctAnswer: 'Using Access specifiers', options: option_6}))
-store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'Which of the following supports the concept of hierarchical classification?', correctAnswer: 'Inheritance', options: option_7}))
-store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'What is ‘Basis of Encapsulation’?', correctAnswer: 'All of the mentioned', options: option_8}))
-store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'To prevent any method from overriding, we declare the method as', correctAnswer: 'final', options: option_9}))
-store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'When a class serves as base class for many derived classes, the situation is called', correctAnswer: 'hierarchical inheritance', options: option_10}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'In Java, how will a class protect the code inside it?', correctAnswer: 'Using Access specifiers', options: option_6}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'Which of the following supports the concept of hierarchical classification in Java?', correctAnswer: 'Inheritance', options: option_7}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'What is ‘Basis of Encapsulation’ in Java?', correctAnswer: 'All of the mentioned', options: option_8}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'In Java, to prevent any method from overriding, we declare the method as', correctAnswer: 'final', options: option_9}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'In Java, when a class serves as base class for many derived classes, the situation is called', correctAnswer: 'hierarchical inheritance', options: option_10}))
 
-store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'These are operators that add and subtract one from their operands.', correctAnswer: '++ and --', options: option_11}))
-store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'This operator increments the value of its operand, then uses the value in context.', correctAnswer: 'prefix increment', options: option_12}))
-store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'The while loop is this type of loop.', correctAnswer: 'pre-test', options: option_13}))
-store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'If you place a semicolon after the test expression in a while loop, it is assumed to be a(n):', correctAnswer: 'null statement', options: option_14}))
-store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'The statements in the body of a while loop may never be executed, whereas the statements in the body of a do-while loop will be executed:', correctAnswer: 'at least once', options: option_15}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'These are operators in Java that add and subtract one from their operands.', correctAnswer: '++ and --', options: option_11}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'This operator in Java increments the value of its operand, then uses the value in context.', correctAnswer: 'prefix increment', options: option_12}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'The while loop is this type of loop in Java.', correctAnswer: 'pre-test', options: option_13}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'In Java, if you place a semicolon after the test expression in a while loop, it is assumed to be a(n):', correctAnswer: 'null statement', options: option_14}))
+store.dispatch(addQuestion({programmingLanguage: 'JAVA', programmingQuestion: 'In Java, the statements in the body of a while loop may never be executed, whereas in the body of a do-while loop will be executed:', correctAnswer: 'at least once', options: option_15}))
 
-store.dispatch(addQuestion({programmingLanguage: 'PYTHON', programmingQuestion: 'Which of the following operators is the correct option for power(xy)?', correctAnswer: 'x**y', options: option_16}))
+store.dispatch(addQuestion({programmingLanguage: 'PYTHON', programmingQuestion: 'In Python, which of the following operators is the correct option for power(xy)?', correctAnswer: 'x**y', options: option_16}))
+store.dispatch(addQuestion({programmingLanguage: 'PYTHON', programmingQuestion: 'Which of one of these is not a Python datatype?', correctAnswer: 'decimal', options: option_25}))
+store.dispatch(addQuestion({programmingLanguage: 'PYTHON', programmingQuestion: 'How can 2 strings (s1 & s2) be added together in Python?', correctAnswer: 's1 += s2', options: option_26}))
+store.dispatch(addQuestion({programmingLanguage: 'PYTHON', programmingQuestion: 'Which method can be used to remove any whitespace in Python?', correctAnswer: 'strip()', options: option_27}))
+store.dispatch(addQuestion({programmingLanguage: 'PYTHON', programmingQuestion: 'Which operator has the lowest precedence in Python?', correctAnswer: 'and', options: option_28}))
 
-store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'The following operator can be used to calculate the value of one number raised to another.', correctAnswer: 'None of the above', options: option_17}))
-
-store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'What is cout used for?', correctAnswer: 'print operator', options: option_18}))
-store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'What is the result of: pow( 3, 2 )', correctAnswer: '9', options: option_19}))
-store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'Which of the following are logical operators?', correctAnswer: '!, ||, &&', options: option_20}))
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'In C++, the following operator can be used to calculate the value of one number raised to another.', correctAnswer: 'None of the above', options: option_17}))
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'What is cout used for in C++?', correctAnswer: 'print operator', options: option_18}))
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'What is the result of: pow( 3, 2 ) in C++', correctAnswer: '9', options: option_19}))
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'Which of the following are logical operators in C++?', correctAnswer: '!, ||, &&', options: option_20}))
 store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'A C++ class is similar to one of these.', correctAnswer: 'structure', options: option_21}))
-store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'Examples of access specifiers are the key words:', correctAnswer: 'private and public', options: option_22}))
+store.dispatch(addQuestion({programmingLanguage: 'C++', programmingQuestion: 'Examples of access specifiers are the key words in C++:', correctAnswer: 'private and public', options: option_22}))
 
 store.dispatch(addQuestion({programmingLanguage: 'C#', programmingQuestion: 'Which of the following is a reserved keyword in C#??', correctAnswer: 'All of the above.', options: option_23}))
 store.dispatch(addQuestion({programmingLanguage: 'C#', programmingQuestion: 'Which of the following converts a type to a single Unicode character, where possible in C#?', correctAnswer: 'ToChar', options: option_24}))
+store.dispatch(addQuestion({programmingLanguage: 'C#', programmingQuestion: 'What is the name of the class that represents a group of constants in C#?', correctAnswer: 'enum', options: option_29}))
+store.dispatch(addQuestion({programmingLanguage: 'C#', programmingQuestion: 'Which of the following variable types can be assigned a value directly in C#?', correctAnswer: 'Value types', options: option_30}))
+store.dispatch(addQuestion({programmingLanguage: 'C#', programmingQuestion: 'Which of the following is true about C# enumeration?', correctAnswer: 'All of the above', options: option_31}))
 
 // console.log(store.getState().Question[0].correctAnswer)
 // // store.getState().user.userChoices.push(1)

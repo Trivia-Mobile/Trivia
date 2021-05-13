@@ -19,7 +19,7 @@ Insert gif or link to demo
 1. Clone the project
 
 ```bash
-  git clone https://github.com/Dramir99/Trivia-Mobile.git
+  git clone https://github.com/Trivia-Mobile/Trivia.git
 ```
 
 2. Go to the project directory

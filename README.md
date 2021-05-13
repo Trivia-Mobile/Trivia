@@ -1,6 +1,43 @@
-# Programming Language Trivia App
 
-## App Description
-* This app is intended for students and to learn and study programming languages in a more fun way compared to reading the book and taking notes. The way this is supposed to be used is to help you study programming language like, definitions, or key characteristics in a language. 
-* This app can do both for someone who already knows the language and wants to get a better understanding and for someone who wants to get started and begin learning to program.
+# Programming Trivia App
 
+Implemented a Trivia App in React Native with 3 other teammates. It will allow users to
+study programming language questions such as JavaScript, Java, etc.
+## Demo
+
+Insert gif or link to demo
+
+  
+## Authors
+
+- [@Daniel Ramirez](https://github.com/Dramir99)
+- [@Bryan Perez](https://github.com/bperez28)
+- [@Jeffrey Lum](https://github.com/JeffreyLum)
+- [@Jessy Francisco](https://github.com/Jfranc90)
+## 🛠 Installing Movie Browser & Set Up W/ Expo
+
+1. Clone the project
+
+```bash
+  git clone https://github.com/Dramir99/Trivia-Mobile.git
+```
+
+2. Go to the project directory
+
+```bash
+  cd Trivia-Mobile
+```
+
+3. Install dependencies
+
+```bash
+  npm install
+```
+
+4. Start the server
+
+```bash
+  npm start
+```
+
+5. Connect your andriod emulator/Phone to the server

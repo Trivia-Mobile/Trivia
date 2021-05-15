@@ -210,7 +210,7 @@ function CodingQuestionScreen({route, navigation }) {
          
         </View>
         <View style={{paddingStart: 100, marginBottom: 20, }}>
-        <AppButton onPress={() => {navigation.navigate('Coding Categories')
+        <BackButton onPress={() => {navigation.navigate('Coding Categories')
                                                 store.getState().user.userChoices = []}} title="Quit" />
                                                 </View>
                                                

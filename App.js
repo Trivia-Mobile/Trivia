@@ -17,6 +17,12 @@ const AppButton = ({ onPress, title }) => (
   </TouchableOpacity>
 );
 
+const BackButton = ({ onPress, title }) => (
+  <TouchableOpacity onPress={onPress} style={styles.backButton} >
+  <Text style={styles.appButtonText}>{title}</Text>
+  </TouchableOpacity>
+);
+
 const AnswerButton = ({ onPress, title }) => (
   <TouchableOpacity onPress={onPress} style={styles.answerButton} >
   <Text style={styles.answerButtonText}>{title}</Text>
@@ -59,7 +65,9 @@ function CodingCategoriesScreen({route, navigation }) {
   return (
     
       <SafeAreaView style={styles.mainContainer}>
+        <Image style = {styles.miniLogo} source={require('./misc/imgs/logo4.png')} />
         <Image style = {styles.backgroundImage} source= {require('./misc/imgs/bgnd.jpg')}/>
+        <Text style={{fontSize: responsiveFontSize(4), color: '#e3c400', marginBottom: 15, textShadowRadius: 20, textShadowColor: 'black'}}>Choose a Topic!</Text>
         <View style={styles.categorySelection}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <CodingCatButton onPress={() => {navigation.navigate('Coding Questions', {
@@ -84,7 +92,7 @@ function CodingCategoriesScreen({route, navigation }) {
         <AppButton onPress={() => {navigation.navigate('Coding Questions', {
             category: ''
           });}} title="Quickplay" />
-        <AppButton onPress={() => navigation.navigate('Home')} title="Go back" />
+        <BackButton onPress={() => navigation.navigate('Home')} title="Go back" />
         
       </View>
     </SafeAreaView>
@@ -303,7 +311,16 @@ const styles = StyleSheet.create({
     width: responsiveWidth(50),
     backgroundColor: '#e3c400',
     alignContent: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+  },
+  backButton: {
+    borderRadius: 15,
+    marginTop: 25,
+    height: responsiveHeight(5),
+    width: responsiveWidth(50),
+    backgroundColor: 'tomato',
+    alignContent: 'center',
+    justifyContent: 'center',
   },
   answerButton: {
     borderRadius: 8,
@@ -398,7 +415,12 @@ const styles = StyleSheet.create({
     opacity: .25
    },
    logo: {
-    width: '100%',
+    width: responsiveWidth(100),
+    resizeMode: 'contain',
+    opacity:1
+   },
+   miniLogo: {
+    width: responsiveWidth(75),
     resizeMode: 'contain',
     opacity:1
    },

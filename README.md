@@ -60,7 +60,7 @@ run this project on snack
 
 ![question screen](https://cdn.discordapp.com/attachments/345484506309853186/843606571531108393/unknown.png)
 
-- When the user gets a question right, his total points for that category will be tallied up and at the end of the quiz, the user's total score will be displayed along with the "LEAVE" button which will redirect the user back to the categories selection screen.
+- When the user gets a question right, the total points for that category will be tallied up and at the end of the quiz, the user's total score will be displayed along with the "LEAVE" button which will redirect the user back to the categories selection screen.
 
 ![results screen](https://cdn.discordapp.com/attachments/345484506309853186/843606622710005770/unknown.png)
 

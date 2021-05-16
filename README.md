@@ -19,7 +19,7 @@ run this project on snack
 > [Trivia Mobile Demo](https://snack.expo.io/@dramir99/github.com-trivia-mobile-trivia)
   
 
-## 🛠 Installing Movie Browser & Set Up W/ Expo
+## 🛠 Installing Trivia App & Set Up W/ Expo
 
 1. Clone the project
 
